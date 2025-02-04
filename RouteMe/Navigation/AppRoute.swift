@@ -15,11 +15,11 @@ enum AppRoute: Hashable {
     var title: String {
         switch self {
         case .map:
-            return "Карта"
+            return String(localized: "Map")
         case .placeDetails:
-            return "Детали места"
+            return String(localized: "Location details")
         case .profile:
-            return "Профиль"
+            return String(localized: "Profile")
         }
     }
 }
