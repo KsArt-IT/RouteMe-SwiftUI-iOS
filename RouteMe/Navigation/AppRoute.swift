@@ -6,20 +6,43 @@
 //
 
 import Foundation
+import SwiftUICore
 
 enum AppRoute: Hashable {
     case map
-    case placeDetails(placeID: String)
+    case placeDetails(_ placeID: String)
     case profile
     
-    var title: String {
+    var title: LocalizedStringKey {
         switch self {
         case .map:
-            return String(localized: "Map")
+            "Map"
         case .placeDetails:
-            return String(localized: "Location details")
+            "Location details"
         case .profile:
-            return String(localized: "Profile")
+            "Profile"
+        }
+    }
+    
+    var tabLabel: LocalizedStringKey {
+        switch self {
+        case .map:
+            "Map"
+        case .placeDetails:
+            "Details"
+        case .profile:
+            "Profile"
+        }
+    }
+    
+    var tabIcon: String {
+        switch self {
+        case .map:
+            "paperplane"
+        case .placeDetails:
+            "pencil.and.list.clipboard"
+        case .profile:
+            "person"
         }
     }
 }

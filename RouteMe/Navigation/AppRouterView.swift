@@ -12,23 +12,42 @@ struct AppRouterView: View {
     @StateObject var appRouter: AppRouter
     
     var body: some View {
-        NavigationStack {
-            switch appRouter.currentRoute {
-            case .map:
-                VStack {
-                    Text("Ok")
-                }
-            case .placeDetails(let placeID):
-                EmptyView()
-            case .profile:
-                EmptyView()
+        TabView(selection: $appRouter.currentRoute) {
+            VStack {
+                Text(AppRoute.map.title)
             }
+            .tabMenu(AppRoute.map)
+            VStack {
+                Text(AppRoute.placeDetails("").title)
+            }
+            .tabMenu(AppRoute.placeDetails(""))
+            VStack {
+                Text(AppRoute.profile.title)
+            }
+            .tabMenu(AppRoute.profile)
         }
-        .navigationTitle(appRouter.currentRoute.title)
         .environment(\.appRouter, appRouter)
     }
 }
 
+fileprivate extension View {
+    @ViewBuilder
+    func tabMenu (_ router: AppRoute) -> some View {
+        self
+            .tag(router)
+            .tabItem {
+                Label {
+                    Text(router.tabLabel)
+                } icon: {
+                    Image(systemName: router.tabIcon)
+                }
+            }
+        // изменить цвет TabView, необходимо для каждого, поэтому расположено тут
+            .toolbarBackground(.visible, for: .tabBar)
+            .toolbarBackground(.ultraThickMaterial, for: .tabBar)
+    }
+}
+
 #Preview {
-//    AppRouterView()
+    //    AppRouterView()
 }

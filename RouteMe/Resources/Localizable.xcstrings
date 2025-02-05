@@ -1,6 +1,22 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Details" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подробности"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подробиці"
+          }
+        }
+      }
+    },
     "Location details" : {
       "localizations" : {
         "ru" : {
@@ -32,9 +48,6 @@
           }
         }
       }
-    },
-    "Ok" : {
-      "shouldTranslate" : false
     },
     "Profile" : {
       "localizations" : {
