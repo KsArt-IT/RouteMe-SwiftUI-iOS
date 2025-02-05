@@ -10,5 +10,9 @@ import Swinject
 final class AppAssembly: Assembly {
     func assemble(container: Container) {
         
+        // Регистрация ViewModels
+        container.register(AppRouter.self) { _ in
+            AppRouter()
+        }
     }
 }
